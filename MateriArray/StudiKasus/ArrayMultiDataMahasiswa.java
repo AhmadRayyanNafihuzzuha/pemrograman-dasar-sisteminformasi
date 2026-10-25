@@ -1,9 +1,8 @@
 package MateriArray.StudiKasus;
-
 import java.util.*;
 public class ArrayMultiDataMahasiswa {
 
-    // 1. Method untuk input ukuran array
+    //Method untuk memasukan jumlah prodi, kelas, dan mahasiswa
     static int inputUkuran(Scanner input, String keterangan) {
         int ukuran;
 
@@ -19,24 +18,16 @@ public class ArrayMultiDataMahasiswa {
         return ukuran;
     }
 
-    // 2. Method untuk input nama mahasiswa
-    static void inputData(
-        Scanner input,
-        String[][][] mahasiswa,
-        String[] prodi
-    ) {
-        input.nextLine(); // Membersihkan sisa Enter
-
+    // Method untuk menginput nama mahasiswa
+    static void inputData(Scanner input, String[][][] mahasiswa, String[] prodi) {
         for (int i = 0; i < mahasiswa.length; i++) {
-            System.out.println("\nProdi: " + prodi[i]);
+            System.out.println("Prodi: " + prodi[i]);
 
             for (int j = 0; j < mahasiswa[i].length; j++) {
                 System.out.println("Kelas " + (char)('A' + j));
 
                 for (int k = 0; k < mahasiswa[i][j].length; k++) {
-                    System.out.print(
-                        "Nama mahasiswa ke-" + (k + 1) + ": "
-                    );
+                    System.out.print("Nama mahasiswa ke-" + (k + 1) + ": ");
 
                     mahasiswa[i][j][k] = input.nextLine().trim();
                 }
@@ -44,18 +35,16 @@ public class ArrayMultiDataMahasiswa {
         }
     }
 
-    // 3. Method untuk menampilkan data dalam bentuk matriks
-    static void tampilkanData(
-        String[][][] mahasiswa,
-        String[] prodi
-    ) {
+    //Method untuk menampilkan data dalam bentuk matriks
+    static void tampilkanData(String[][][] mahasiswa, String[] prodi) {
         for (int i = 0; i < mahasiswa.length; i++) {
-            System.out.println("\nProdi: " + prodi[i]);
+            System.out.println("Prodi: " + prodi[i]);
 
+            //saya juga memodifikasi dengan menambahkan syntak untuk perataan kolom
             System.out.printf("%-10s", "Kelas");
 
             for (int k = 0; k < mahasiswa[i][0].length; k++) {
-                System.out.printf("| %-18s", "Mhs " + (k + 1));
+                System.out.printf("| %-18s", "Mahasiswa " + (k + 1));
             }
 
             System.out.println();
@@ -72,13 +61,11 @@ public class ArrayMultiDataMahasiswa {
         }
     }
 
-    // 4. Method untuk operasi string
-    static void operasiString(
-        Scanner input,
-        String[][][] mahasiswa,
-        String[] prodi
-    ) {
-        System.out.println("\n=== OPERASI STRING ===");
+    //method untuk melakukan operasi string, seperti pencarian nama mahasiswa
+    //menampilkan nama mahasiswa dalam huruf kapital, dan menampilkan prodi serta kelasnya
+    static void operasiString(Scanner input, String[][][] mahasiswa, String[] prodi) {
+
+        System.out.println("=== OPERASI STRING ===");
 
         System.out.print("Masukkan nama untuk dicari: ");
         String cari = input.nextLine().trim();
@@ -91,10 +78,10 @@ public class ArrayMultiDataMahasiswa {
 
                     String nama = mahasiswa[i][j][k];
 
-                    // Mengubah nama menjadi huruf kapital
+                    //Mengubah nama menjadi huruf kapital
                     String namaKapital = nama.toUpperCase();
 
-                    // Pencarian tanpa membedakan huruf besar/kecil
+                    //Pencarian tanpa membedakan huruf besar/kecil
                     if (nama.equalsIgnoreCase(cari)) {
                         System.out.println("\nMahasiswa ditemukan!");
                         System.out.println("Nama       : " + nama);
@@ -106,29 +93,23 @@ public class ArrayMultiDataMahasiswa {
                 }
             }
         }
-
+        //jika tidak ditemukan, sistem akan menampilkan pesan bahwa nama mahasiswa tidak ditemukan
         if (!ditemukan) {
             System.out.println("Nama mahasiswa tidak ditemukan.");
         }
     }
 
-    // 5. Method utama
+    //eksekutor method utama
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         System.out.println("=== PENDATAAN MAHASISWA ===");
 
-        int jumlahProdi = inputUkuran(
-            input, "Jumlah prodi (3): "
-        );
+        int jumlahProdi = inputUkuran(input, "Jumlah prodi: ");
 
-        int jumlahKelas = inputUkuran(
-            input, "Jumlah kelas per prodi (3): "
-        );
+        int jumlahKelas = inputUkuran(input, "Jumlah kelas per prodi: ");
 
-        int jumlahMahasiswa = inputUkuran(
-            input, "Jumlah mahasiswa per kelas (5): "
-        );
+        int jumlahMahasiswa = inputUkuran(input, "Jumlah mahasiswa per kelas: ");
 
         String[][][] mahasiswa = new String
             [jumlahProdi][jumlahKelas][jumlahMahasiswa];
@@ -149,3 +130,6 @@ public class ArrayMultiDataMahasiswa {
         input.close();
     }
 }
+
+/*Mohon maaf sebelumnya bu, Saya dalam pengerjaan Studi Kasus ini juga dibantu oleh AI dan beberapa teman saya untuk menyelesaikannya.
+Namun, saya tetap berusaha untuk memahami setiap baris kode yang saya tulis dan memastikan bahwa saya dapat menjelaskan logika di baliknya. Terima kasih atas pengertiannya.*/

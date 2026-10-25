@@ -1,4 +1,4 @@
-package MateriArray.Multidimensi;
+package MateriArray.StudiKasus;
 public class PenjumlahanDuaMatriks {
     public static void main(String[] args) {
         int[][] satu = {{1,2}, {3,4}};
