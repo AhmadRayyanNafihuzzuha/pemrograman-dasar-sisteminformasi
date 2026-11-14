@@ -7,7 +7,7 @@ public class TugasAnalisisMahasiswa_denganBug1 {
     }
     
     public static double hitungRataRata(int nilai1, int nilai2, int nilai3) {
-        return (nilai1 + nilai2 + nilai3) / 3.0
+        return (nilai1 + nilai2 + nilai3) / 3.0;
     }
     
     public static String tentukanGrade(double rataRata) {
