@@ -30,7 +30,7 @@ public class FormLogin extends javax.swing.JFrame {
         inputUsername = new javax.swing.JTextField();
         inputPassword = new javax.swing.JPasswordField();
         buttonLogin = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,11 +44,12 @@ public class FormLogin extends javax.swing.JFrame {
 
         inputPassword.addActionListener(this::inputPasswordActionPerformed);
 
+        buttonLogin.setForeground(new java.awt.Color(255, 255, 255));
         buttonLogin.setText("Login");
         buttonLogin.addActionListener(this::buttonLoginActionPerformed);
 
-        jButton1.setText("Cancel");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        reset.setText("Cancel");
+        reset.addActionListener(this::resetActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,7 +58,7 @@ public class FormLogin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(97, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton1)
+                    .addComponent(reset)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
@@ -82,7 +83,7 @@ public class FormLogin extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(buttonLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(32, 32, 32))
         );
 
@@ -113,13 +114,13 @@ public class FormLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
         // TODO add your handling code here:
         inputUsername.setText("");
         inputPassword.setText("");
 
         inputUsername.requestFocus();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_resetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,9 +151,9 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JButton buttonLogin;
     private javax.swing.JPasswordField inputPassword;
     private javax.swing.JTextField inputUsername;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton reset;
     // End of variables declaration//GEN-END:variables
 }
