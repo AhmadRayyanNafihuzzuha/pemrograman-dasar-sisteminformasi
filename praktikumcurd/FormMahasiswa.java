@@ -120,16 +120,14 @@ public class FormMahasiswa extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Title)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(tmblTambah)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tmblUbah)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tmblHapus)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tmblBersihkan)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tmblTambah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tmblUbah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tmblHapus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tmblBersihkan))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(NIM, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -150,6 +148,10 @@ public class FormMahasiswa extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(rbPerempuan, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(14, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Title)
+                .addGap(164, 164, 164))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,10 +274,34 @@ public class FormMahasiswa extends javax.swing.JFrame {
 
     private void tmblHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tmblHapusActionPerformed
         // TODO add your handling code here:
+        int baris = tblMahasiswa.getSelectedRow();
+        
+        if (baris == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih data di tabel terlebih dahulu!");
+            return;
+        }
+        
+        int pilih = JOptionPane.showConfirmDialog(
+                this, "Hapus data " + dataMahasiswa[baris][1] + "?", "Konfirmasi",
+                JOptionPane.YES_NO_OPTION);
+        
+        if (pilih != JOptionPane.YES_OPTION) return;
+        
+        for (int i = baris; i < jumlah - 1; i++) {
+            dataMahasiswa[i] = dataMahasiswa[i + 1];
+        }
+        
+        dataMahasiswa[jumlah - 1] = new String[4];
+        jumlah--;
+        
+        tampilkanData();
+        bersihkanForm();
     }//GEN-LAST:event_tmblHapusActionPerformed
 
     private void tmblBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tmblBersihkanActionPerformed
         // TODO add your handling code here:
+        bersihkanForm();
+        
     }//GEN-LAST:event_tmblBersihkanActionPerformed
 
     private void inputNimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNimActionPerformed
