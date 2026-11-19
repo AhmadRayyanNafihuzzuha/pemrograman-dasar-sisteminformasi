@@ -193,7 +193,7 @@ public class FormMahasiswaWithDB extends javax.swing.JFrame {
     // READ: tampilkan isi array ke tabel
     private void tampilkanData() {
     model.setRowCount(0);
-    String sql = "SELECT nimMahasiswa, namaMahasiswa, jenisKelamin, prodi FROM mahasiswa ORDER BY nimMahasiswa";
+    String sql = "SELECT nimMahasiswa, namaMahasiswa, jenisKelamin, prodi FROM datamahasiswa ORDER BY nimMahasiswa";
 
     try (Connection conn = connection.getConnection();
          Statement st = conn.createStatement();
@@ -201,9 +201,9 @@ public class FormMahasiswaWithDB extends javax.swing.JFrame {
 
         while (rs.next()) {
             model.addRow(new Object[]{
-                rs.getString("nim"),
-                rs.getString("nama"),
-                rs.getString("jk"),
+                rs.getString("nimMahasiswa"),
+                rs.getString("namaMahasiswa"),
+                rs.getString("jenisKelamin"),
                 rs.getString("prodi")
             });
         }
@@ -239,7 +239,7 @@ public class FormMahasiswaWithDB extends javax.swing.JFrame {
         if (!inputValid())
             return;
         
-        String sql = "INSERT INTO mahasiswa (nimMahasiswa, namaMahasiswa, jenisKelamin, prodi) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO datamahasiswa (nimMahasiswa, namaMahasiswa, jenisKelamin, prodi) VALUES (?, ?, ?, ?)";
         
         try (Connection conn = connection.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -270,7 +270,7 @@ public class FormMahasiswaWithDB extends javax.swing.JFrame {
          if (!inputValid())
              return;
          
-         String sql = "UPDATE mahasiswa SET nama = ?, jk = ?, prodi = ? WHERE nim = ?";
+         String sql = "UPDATE datamahasiswa SET namaMahasiswa = ?, jenisKelamin = ?, prodi = ? WHERE nimMahasiswa = ?";
          
          try (Connection conn = connection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -296,7 +296,7 @@ public class FormMahasiswaWithDB extends javax.swing.JFrame {
         int pilih = JOptionPane.showConfirmDialog(this,
                 "Hapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (pilih != JOptionPane.YES_OPTION) return;
-        String sql = "DELETE FROM mahasiswa WHERE nimMahasiswa = ?";
+        String sql = "DELETE FROM datamahasiswa WHERE nimMahasiswa = ?";
         try (Connection conn = connection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, inputNim.getText().trim());
