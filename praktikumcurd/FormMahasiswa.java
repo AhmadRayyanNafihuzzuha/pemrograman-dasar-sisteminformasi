@@ -1,8 +1,9 @@
 package praktikumcurd;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 public class FormMahasiswa extends javax.swing.JFrame {
-    
+    private ArrayList<Integer> indeksTampil = new ArrayList<>();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormMahasiswa.class.getName());
 
     private final int MAKS = 134;
@@ -181,9 +182,9 @@ public class FormMahasiswa extends javax.swing.JFrame {
                     .addComponent(tmblUbah)
                     .addComponent(tmblHapus)
                     .addComponent(tmblBersihkan))
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
 
         pack();
@@ -191,9 +192,11 @@ public class FormMahasiswa extends javax.swing.JFrame {
     // READ: tampilkan isi array ke tabel
     private void tampilkanData() {
         model.setRowCount(0);
+        indeksTampil.clear();
         
         for (int i = 0; i < jumlah; i++) {
-            model.addRow(dataMahasiswa[i]);
+                model.addRow(dataMahasiswa[i]);
+            indeksTampil.add(i);
         }
     }
     // Cari posisi NIM di array, hasil -1 jika tidak ada
@@ -315,21 +318,21 @@ public class FormMahasiswa extends javax.swing.JFrame {
     private void tblMahasiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMahasiswaMouseClicked
         // TODO add your handling code here:
         int baris = tblMahasiswa.getSelectedRow();
-        
+
         if (baris == -1)
-            return;
-        
+        return;
+
         inputNim.setText(model.getValueAt(baris,0).toString());
         inputNama.setText(model.getValueAt(baris,1).toString());
-        
+
         if (model.getValueAt(baris, 2).toString().equals("Laki-Laki")) {
             rbLaki.setSelected(true);
         }else {
             rbPerempuan.setSelected(true);
         }
-        
+
         cbProdi.setSelectedItem(model.getValueAt(baris, 3).toString());
-        
+
         inputNim.setEditable(false);
     }//GEN-LAST:event_tblMahasiswaMouseClicked
 
