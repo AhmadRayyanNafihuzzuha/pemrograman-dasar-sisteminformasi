@@ -7,7 +7,7 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormMahasiswaPengembangan.class.getName());
 
     private final int MAKS = 134;
-    private String[][] dataMahasiswa = new String[MAKS][4];
+    private String[][] dataMahasiswa = new String[MAKS][5];
     private int jumlah = 0;
     private DefaultTableModel model;
     
@@ -16,7 +16,7 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
     setLocationRelativeTo(null);
 
     model = new DefaultTableModel(
-        new String[]{"NIM", "Nama", "Jenis Kelamin", "Program Studi"}, 0) {
+        new String[]{"NIM", "Nama", "Jenis Kelamin", "Program Studi", "IPK"}, 0) {
         @Override
         public boolean isCellEditable(int row, int column) {
             return false;
@@ -55,6 +55,8 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
         tblMahasiswa = new javax.swing.JTable();
         txtCari = new javax.swing.JTextField();
         tmblCari = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        ipk = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,11 +65,11 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
 
         NIM.setText("NIM:");
 
-        NAMA.setText("NAMA:");
+        NAMA.setText("Nama:");
 
-        JenisKelamin.setText("JENIS KELAMIN:");
+        JenisKelamin.setText("Jenis Kelamin:");
 
-        Prodi.setText("PROGRAM STUDI:");
+        Prodi.setText("Program Studi:");
 
         tmblTambah.setText("Tambah");
         tmblTambah.addActionListener(this::tmblTambahActionPerformed);
@@ -120,6 +122,8 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
         tmblCari.setText("Cari");
         tmblCari.addActionListener(this::tmblCariActionPerformed);
 
+        jLabel1.setText("IPK:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,39 +136,47 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NIM, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputNim, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NAMA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(Prodi)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cbProdi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(JenisKelamin)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(rbLaki, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(rbPerempuan, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtCari, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(tmblTambah)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tmblUbah)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tmblHapus)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tmblBersihkan))
-                            .addComponent(tmblCari))))
+                            .addComponent(rbPerempuan, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Prodi)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(47, 47, 47)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ipk, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbProdi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(NIM, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputNim, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(NAMA)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtCari, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(tmblTambah)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(tmblUbah)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(tmblHapus)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(tmblBersihkan))
+                                .addComponent(tmblCari)))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,7 +201,11 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Prodi)
                     .addComponent(cbProdi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(ipk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tmblTambah)
                     .addComponent(tmblUbah)
@@ -298,6 +314,7 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
         dataMahasiswa[jumlah][1] = inputNama.getText();
         dataMahasiswa[jumlah][2] = getJenisKelamin();
         dataMahasiswa[jumlah][3] = cbProdi.getSelectedItem().toString();
+        dataMahasiswa[jumlah][4] = ipk.getText();
         
         jumlah++;
         
@@ -320,6 +337,7 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
          dataMahasiswa[baris][1] = inputNama.getText().trim();
          dataMahasiswa[baris][2] = getJenisKelamin();
          dataMahasiswa[baris][3] = cbProdi.getSelectedItem().toString();
+         dataMahasiswa[baris][4] = ipk.getText();
          
          tampilkanData();
          bersihkanForm();
@@ -382,6 +400,8 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
         }
 
         cbProdi.setSelectedItem(model.getValueAt(baris, 3).toString());
+        
+        ipk.setText(model.getValueAt(baris, 4).toString());
 
         inputNim.setEditable(false);
     }//GEN-LAST:event_tblMahasiswaMouseClicked
@@ -429,6 +449,8 @@ public class FormMahasiswaPengembangan extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbProdi;
     private javax.swing.JTextField inputNama;
     private javax.swing.JTextField inputNim;
+    private javax.swing.JTextField ipk;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.ButtonGroup jenisKelamin;
     private javax.swing.JRadioButton rbLaki;

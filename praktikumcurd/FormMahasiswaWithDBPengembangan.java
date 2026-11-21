@@ -17,7 +17,7 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
     setLocationRelativeTo(null);
 
     model = new DefaultTableModel(
-        new String[]{"NIM", "Nama", "Jenis Kelamin", "Program Studi"}, 0) {
+        new String[]{"NIM", "Nama", "Jenis Kelamin", "Program Studi", "IPK"}, 0) {
         @Override
         public boolean isCellEditable(int row, int column) {
             return false;
@@ -57,6 +57,8 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
         Title1 = new javax.swing.JLabel();
         txtCari = new javax.swing.JTextField();
         tmblCari = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        ipk = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +125,8 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
         tmblCari.setText("Cari");
         tmblCari.addActionListener(this::tmblCariActionPerformed);
 
+        jLabel1.setText("IPK:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,25 +144,24 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NIM, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputNim, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NAMA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(Prodi)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cbProdi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(JenisKelamin)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(rbLaki, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(rbPerempuan, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(rbPerempuan, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Prodi)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(47, 47, 47)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ipk, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbProdi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtCari, javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,13 +175,22 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
                                 .addComponent(tmblHapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tmblBersihkan))
-                            .addComponent(tmblCari))))
+                            .addComponent(tmblCari)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(NIM, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inputNim, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(NAMA)
+                            .addGap(46, 46, 46)
+                            .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Title1)
@@ -199,7 +211,11 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Prodi)
                     .addComponent(cbProdi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(ipk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tmblTambah)
                     .addComponent(tmblUbah)
@@ -210,7 +226,8 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
                     .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tmblCari))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -218,7 +235,7 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
     // READ: tampilkan isi array ke tabel
     private void tampilkanData() {
     model.setRowCount(0);
-    String sql = "SELECT nimMahasiswa, namaMahasiswa, jenisKelamin, prodi FROM datamahasiswa ORDER BY nimMahasiswa";
+    String sql = "SELECT nimMahasiswa, namaMahasiswa, jenisKelamin, prodi, ipk FROM datamahasiswa ORDER BY nimMahasiswa";
 
     try (Connection conn = connection.getConnection();
          Statement st = conn.createStatement();
@@ -229,7 +246,8 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
                 rs.getString("nimMahasiswa"),
                 rs.getString("namaMahasiswa"),
                 rs.getString("jenisKelamin"),
-                rs.getString("prodi")
+                rs.getString("prodi"),
+                rs.getDouble("ipk")
             });
         }
     } catch (SQLException e) {
@@ -258,13 +276,14 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
         inputNim.setEditable(true);
         tblMahasiswa.clearSelection();
         inputNim.requestFocus();
+        ipk.setText("");
     }
     
     private void cariData() {
 
     String keyword = txtCari.getText().trim();
 
-    String sql = "SELECT nimMahasiswa, namaMahasiswa, jenisKelamin, prodi " +
+    String sql = "SELECT nimMahasiswa, namaMahasiswa, jenisKelamin, prodi, ipk " +
                  "FROM datamahasiswa " +
                  "WHERE namaMahasiswa LIKE ? ORDER BY nimMahasiswa";
 
@@ -283,7 +302,8 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
                 rs.getString("nimMahasiswa"),
                 rs.getString("namaMahasiswa"),
                 rs.getString("jenisKelamin"),
-                rs.getString("prodi")
+                rs.getString("prodi"),
+                rs.getDouble("ipk")
             });
 
         }
@@ -302,7 +322,7 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
         if (!inputValid())
             return;
         
-        String sql = "INSERT INTO datamahasiswa (nimMahasiswa, namaMahasiswa, jenisKelamin, prodi) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO datamahasiswa (nimMahasiswa, namaMahasiswa, jenisKelamin, prodi, ipk) VALUES (?, ?, ?, ?, ?)";
         
         try (Connection conn = connection.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -310,6 +330,7 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
             ps.setString(2, inputNama.getText().trim());
             ps.setString(3, getJenisKelamin());
             ps.setString(4, cbProdi.getSelectedItem().toString());
+            ps.setString(5, ipk.getText());
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
@@ -325,29 +346,36 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
 
     private void tmblUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tmblUbahActionPerformed
         // TODO add your handling code here:
-         if (tblMahasiswa.getSelectedRow() == -1) {
-             JOptionPane.showMessageDialog(this, "Pilih data di tabel terlebih dahulu!");
-             return;
-         }
-         
-         if (!inputValid())
-             return;
-         
-         String sql = "UPDATE datamahasiswa SET namaMahasiswa = ?, jenisKelamin = ?, prodi = ? WHERE nimMahasiswa = ?";
-         
-         try (Connection conn = connection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        if (tblMahasiswa.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih data di tabel terlebih dahulu!");
+            return;
+        }
+        
+        if (!inputValid())
+            return;
+        
+        String sql = "UPDATE datamahasiswa SET namaMahasiswa = ?, "
+                + "jenisKelamin = ?, prodi = ?, ipk = ? "
+                + "WHERE nimMahasiswa = ?";
+        
+        try (Connection conn = connection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, inputNama.getText().trim());
             ps.setString(2, getJenisKelamin());
             ps.setString(3, cbProdi.getSelectedItem().toString());
-            ps.setString(4, inputNim.getText().trim());
+            ps.setDouble(4, Double.parseDouble(ipk.getText().trim()));
+            ps.setString(5, inputNim.getText().trim());
             ps.executeUpdate();
+            
             tampilkanData();
             bersihkanForm();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Gagal mengubah: " + e.getMessage());
+            
+            JOptionPane.showMessageDialog(this, "Data berhasil diubah!");
+        } catch
+                (SQLException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Gagal mengubah: " + e.getMessage());
         }
-
     }//GEN-LAST:event_tmblUbahActionPerformed
 
     private void tmblHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tmblHapusActionPerformed
@@ -403,6 +431,8 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
         
         cbProdi.setSelectedItem(model.getValueAt(baris, 3).toString());
         
+        ipk.setText(model.getValueAt(baris, 4).toString());
+        
         inputNim.setEditable(false);
     }//GEN-LAST:event_tblMahasiswaMouseClicked
 
@@ -446,6 +476,8 @@ public class FormMahasiswaWithDBPengembangan extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbProdi;
     private javax.swing.JTextField inputNama;
     private javax.swing.JTextField inputNim;
+    private javax.swing.JTextField ipk;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.ButtonGroup jenisKelamin;
     private javax.swing.JRadioButton rbLaki;
